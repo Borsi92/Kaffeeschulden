@@ -149,8 +149,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="game.html">Game</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tools</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="PUBG.html">PUBG Stats</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
@@ -184,8 +189,8 @@
                 <td><img class="mobileSm" src="img/marius.jpg" alt="" height="200" width="200"></td>
             </tr>
             <tr>
-                <td class="anzeigeText"><?php echo file_get_contents("stefan.txt"); ?></td>
-                <td class="anzeigeText"><?php echo file_get_contents("marius.txt"); ?></td>
+                <td class="anzeigeText"><?php echo file_get_contents("PHP-Utility/stefan.txt"); ?></td>
+                <td class="anzeigeText"><?php echo file_get_contents("PHP-Utility/marius.txt"); ?></td>
             </tr>
             <tr>
                 <td>
@@ -280,11 +285,12 @@
             // async: false,
             type: "POST",
             // aufzurufendes PHP-Programm, das die Daten in Datenbank speichern soll
-            url: "writeTxt.php",
+            url: "PHP-Utility/writeTxt.php",
             // Daten, die an das PHP-Programm übergeben werden sollen
             data: {kaffee: kaffee, file: person + ".txt"},
 
             success: function(response){
+                console.log("Daten gespeichert!");
                 if(person == "stefan"){
                     tabelle.rows[2].cells[0].innerHTML = response;
                 }
@@ -293,6 +299,7 @@
                 }
             },
             error: function(jqXHR, textStatus, errorThrown){
+                console.log("Daten konnten nicht gespeichert werden!");
                 alert(errorThrown);
             }
         });
@@ -311,18 +318,20 @@
             // async: false,
             type: "POST",
             // aufzurufendes PHP-Programm, das die Daten in Datenbank speichern soll
-            url: "checkPassword.php",
+            url: "PHP-Utility/checkPassword.php",
             // Daten, die an das PHP-Programm übergeben werden sollen
             data: {password: password},
 
             success: function(response){
                 if(response == "true"){
+                console.log("Password korrekt!");
                     writeData(kaffee, person);
                     // setze Daten zurück
                     kaffee = "";
                     person = "";
                 }
                 else{
+                    console.log("Password nicht korrekt!");
                     // setze Daten zurück
                     kaffee = "";
                     person = "";

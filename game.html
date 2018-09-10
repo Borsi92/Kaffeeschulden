@@ -9,10 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="styles.css">
-    <script src="drawing.js"></script>
-    <script src="objects.js"></script>
-    <script src="game.js"></script>
+    <link rel="stylesheet" href="Style/canvasStyle.css">
+    <script src="JavaScript/Game/drawing.js"></script>
+    <script src="JavaScript/Game/objects.js"></script>
+    <script src="JavaScript/Game/game.js"></script>
 
     <style>
         #tabelle td{
@@ -136,8 +136,13 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="game.html">Game</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tools</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Tools
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="PUBG.html">PUBG Stats</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="about.html">About</a>
