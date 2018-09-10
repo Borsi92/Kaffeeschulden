@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kaffeeschulden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <style>
+        #tabelle td{
+            text-align:center;
+            vertical-align:middle;
+        }
+
+        #bohne{
+            height: 50px;
+            width: 50px;
+        }
+
+        .anzeigeText{
+            font-size: 22px;
+        }
+
+        .btnChange{
+            border: none;
+            width:70px;
+        }
+
+        .btn{
+            background-color: #722d10;
+            font-weight: bold;
+            /*color: #dbdbdb;*/
+        }
+        button{ /* damit die Button mit img keinen grauen Hintergrund haben, speziell die Bohnen*/
+            background-color: #ffffff;
+        }
+
+        .custom-margin{
+            margin: 1% auto;
+        }
+
+        /* für password eingabe */
+        #popup {
+            width:220px;
+            height:100px;
+            padding:20px;
+            background-color: #6d2e11;
+            position:absolute;
+            top:30%;
+            left:25%;
+            color: black;
+            font-weight: bold;
+            display:none;
+        }
+
+        .kompetenz-icon{
+            max-width: 200px;
+        }
+
+        /* CUSTOM NAVBAR*/
+        .navbar{
+            /*font-size: 1.2em;*/
+        }
+        .navbar-custom {
+            background-color: #6d2e11;
+        }
+        /* change the brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: rgba(255,255,255,.8);
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: rgba(255,255,255,.5);
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            color: #ffffff;
+        }
+        /* für das Toggler Icon*/
+        .navbar-custom .navbar-toggler{
+            border-color: rgb(0,0,0);
+        }
+        .navbar-custom .navbar-toggler .navbar-toggler-icon{
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        /* Sticky footer styles-------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #6d2e11;
+            color: #ffffff;
+            font-size: 1.2em;
+        }
+
+        .fa {
+            padding: 15px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        .fa:hover {
+            color: #d5d5d5;
+            text-decoration: none;
+        }
+        .carousel-inner img { /* carousel responsive */
+            max-width: 1850px;
+            max-height: 850px;
+            width: 100%;
+            height: 100%;
+        }
+        .carousel-caption{
+            color: #ffffff;
+        }
+        @media (max-width: 600px){
+            .mobileSm{
+                max-width: 160px;
+                max-height: 160px;
+            }
+            .kompetenz-icon{
+                max-width: 150px;
+            }
+            .carousel-caption{
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+
+<div class="container_fluid">
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index.php"><img src="img/BorsiTec.png"></a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="game.html">Game</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tools</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Huiuiui
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Marius</a>
+                        <a class="dropdown-item" href="#">stinkt</a>
+                        <a class="dropdown-item" href="#">hart</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div id="myCarousel" class="carousel slide mb-3" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#myCarousel" data-slide-to="1"></li>
+        <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="img/se1_s.jpg" width="1850" height="850">
+            <div class="carousel-caption">
+                <h1>Professionelle Softwareentwicklung</h1>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="img/se2_s.jpg" width="1850" height="850">
+        </div>
+        <div class="carousel-item">
+            <img src="img/se3_s.jpg" width="1850" height="850">
+        </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+        <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+        <span class="carousel-control-next-icon"></span>
+    </a>
+</div>
+
+<div class="container text-center">
+    <h3>Über uns</h3>
+    <div class="row">
+        <div class="card col-sm-6 mx-auto mb-3" style="max-width:300px">
+            <img class="card-img-top" src="img/stefan_raw.jpg" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">Stefan Borsi</h4>
+                <p class="card-text">Stefan Borsi ist ein Software-Entwickler und Ingenieur</p>
+                <button class="btn" data-toggle="collapse" data-target="#profil-s">See Profile</button>
+                <div id="profil-s" class="collapse">
+                    <p>Mit Pfeiltasten steuern. Mit Leertaste schießen. G schaltet einige Hilfslinien für die Entwicklung ein.</p>
+                </div>
+            </div>
+        </div>
+        <div class="card col-sm-6 mx-auto" style="max-width:300px">
+            <img class="card-img-top" src="img/marius_raw.jpg" style="width:100%">
+            <div class="card-body">
+                <h4 class="card-title">Marius Pleger</h4>
+                <p class="card-text">Marius Pleger ist ein Software-Entwickler</p>
+                <button class="btn" data-toggle="collapse" data-target="#profil-m">See Profile</button>
+                <div id="profil-m" class="collapse">
+                    <p>Mit Pfeiltasten steuern. Mit Leertaste schießen. G schaltet einige Hilfslinien für die Entwicklung ein.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3 class="mt-5">Unsere Kompetenzen</h3>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img class="kompetenz-icon" src="img/html5.png" >
+            <h4>HTML5</h4>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img class="kompetenz-icon" src="img/css3.png">
+            <h4>CSS3</h4>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img class="kompetenz-icon" src="img/javascript.png">
+            <h4>JavaScript</h4>
+        </div>
+        <div class="col-sm-12 col-md-6 col-lg-3">
+            <img class="kompetenz-icon" src="img/Java.png">
+            <h4>Java</h4>
+        </div>
+    </div>
+
+    <h3 class="my-5">Beispielprodukte</h3>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h4>Digitales Parkhaus</h4>
+            <p class="text-left">Ein altes, konventionelles Parkhaussystem wurde digitalisiert und modernisiert.</p>
+            <p>
+                <ul class="text-left">
+                    Vorhandene Features:
+                    <li>Anzeige verfügbarer Parkplätze</li>
+                    <li>automatisches Tracking</li>
+                    <li>Abschaffung Schrankenwärter und Kassierer</li>
+                </ul>
+            </p>
+
+        </div>
+        <div class="col-md-6">
+            <img src="img/parkhaus.png" class="img-fluid rounded">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Digitales Parkhaus</h4>
+            <p class="text-left">Ein altes, konventionelles Parkhaussystem wurde digitalisiert und modernisiert.</p>
+            <p>
+            <ul class="text-left">
+                Vorhandene Features:
+                <li>Anzeige verfügbarer Parkplätze</li>
+                <li>automatisches Tracking</li>
+                <li>Abschaffung Schrankenwärter und Kassierer</li>
+            </ul>
+            </p>
+
+        </div>
+        <div class="col-md-6">
+            <img src="img/parkhaus.png" class="img-fluid rounded">
+        </div>
+    </div>
+
+</div>
+
+<footer class="footer">
+    <div class="container">
+        Connect
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="https://www.instagram.com/borsi_92" class="fa fa-instagram"></a>
+        <a href="https://www.youtube.com/channel/UCPipdRcRtlLy5DLUvTKi1_A" class="fa fa-youtube"></a>
+    </div>
+</footer>
+
+</body>
+</html>

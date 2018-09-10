@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kaffeeschulden Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="drawing.js"></script>
+    <script src="objects.js"></script>
+    <script src="game.js"></script>
+
+    <style>
+        #tabelle td{
+            text-align:center;
+            vertical-align:middle;
+        }
+
+        #bohne{
+            height: 50px;
+            width: 50px;
+        }
+
+        .anzeigeText{
+            font-size: 22px;
+        }
+
+        .btnChange{
+            border: none;
+            width:70px;
+        }
+
+        .btnAdd{
+            background-color: #722d10;
+            font-weight: bold;
+            /*color: #dbdbdb;*/
+        }
+
+        .custom-margin{
+            margin: 1% auto;
+        }
+
+        /* CUSTOM NAVBAR*/
+        .navbar{
+            /*font-size: 1.2em;*/
+        }
+        .navbar-custom {
+            background-color: #6d2e11;
+        }
+        /* change the brand and text color */
+        .navbar-custom .navbar-brand,
+        .navbar-custom .navbar-text {
+            color: rgba(255,255,255,.8);
+        }
+        /* change the link color */
+        .navbar-custom .navbar-nav .nav-link {
+            color: rgba(255,255,255,.5);
+        }
+        /* change the color of active or hovered links */
+        .navbar-custom .nav-item.active .nav-link,
+        .navbar-custom .nav-item:hover .nav-link {
+            color: #ffffff;
+        }
+        /* für das Toggler Icon*/
+        .navbar-custom .navbar-toggler{
+            border-color: rgb(0,0,0);
+        }
+        .navbar-custom .navbar-toggler .navbar-toggler-icon{
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        }
+
+        /* Sticky footer styles
+-------------------------------------------------- */
+        html {
+            position: relative;
+            min-height: 100%;
+        }
+        body {
+            /* Margin bottom by footer height */
+            margin-bottom: 60px;
+        }
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            /* Set the fixed height of the footer here */
+            height: 60px;
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #6d2e11;
+            color: #ffffff;
+            font-size: 1.2em;
+        }
+
+        .fa {
+            padding: 15px;
+            font-size: 20px;
+            color: #ffffff;
+        }
+        .fa:hover {
+            color: #d5d5d5;
+            text-decoration: none;
+        }
+
+        @media (max-width: 600px){
+            .mobileSm{
+                width: 80%;
+                height: 80%;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container_fluid">
+    <nav class="navbar navbar-expand-sm navbar-custom">
+        <!-- Brand -->
+        <a class="navbar-brand" href="index.php"><img src="img/BorsiTec.png"></a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="game.html">Game</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Tools</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">About</a>
+                </li>
+                <!-- Dropdown -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                        Huiuiui
+                    </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#">Marius</a>
+                        <a class="dropdown-item" href="#">stinkt</a>
+                        <a class="dropdown-item" href="#">hart</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<div class="container">
+    <h3>Kleines Gameche</h3>
+    <canvas id="canvas" width="600" height="600" tabindex="1"></canvas>
+</div>
+<br>
+<div class="container custom-margin">
+    <button type="button" class="btn btn-sm btnAdd" data-toggle="collapse" data-target="#anleitung">Anleitung</button>
+    <div id="anleitung" class="collapse">
+        <p>Mit Pfeiltasten steuern. Mit Leertaste schießen. G schaltet einige Hilfslinien für die Entwicklung ein.</p>
+    </div>
+</div>
+
+
+
+<footer class="footer">
+    <div class="container">
+        Connect
+        <a href="#" class="fa fa-facebook"></a>
+        <a href="#" class="fa fa-twitter"></a>
+        <a href="#" class="fa fa-google"></a>
+        <a href="https://www.instagram.com/borsi_92" class="fa fa-instagram"></a>
+        <a href="https://www.youtube.com/channel/UCPipdRcRtlLy5DLUvTKi1_A" class="fa fa-youtube"></a>
+    </div>
+</footer>
+
+<script>
+    var game = new AsteroidsGame("canvas");
+</script>
+
+</body>
+</html>
