@@ -229,6 +229,9 @@
     function getMatches() {
         console.log("GET MATCHES");
 
+        // löscht alle Zeilen der Tabellen außer der ersten (Header-)Zeile
+        $(".statsTable").find("tr:gt(0)").remove();
+
         let matchesIds;
 
         const playerNames = ["TheBorsi", "Linshifuf"];
